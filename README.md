@@ -7,3 +7,4 @@
 - [ ] Hacer una mierdipresentación
 - [ ] Poder elegir entre gmail, yahoo, outlook...
 - [ ] De momento hacerlo algo por consola, sencillo, sin interfaz gráfica ni nada
+- [ ] Listado de correos que puedes descargar
