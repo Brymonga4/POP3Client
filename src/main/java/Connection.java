@@ -18,46 +18,50 @@ public class Connection {
         properties.put("mail.pop3s.ssl.trust", "*"); // Confía en todos los certificados
         //Si se pone a "*", confío en todos los hosts.
 
-        //create a session object that contains the connection properties for the mail server.
+        //Se crea un objeto session que contenga las propiedades para la conexión con el servidor mail
         Session session = Session.getDefaultInstance(properties);
-        //session.setDebug(true);
 
-        //we are creating a session object for a POP3 server
-        // Once we have the session object, we can create a store object that represents the connection to the mail server.
+        //Una vez tengamos la session, podemos guardar un objeto que represente la conexión con el servidor mail
 
-        // Connect to the POP3 server
-
+        // Nos conectamos al servidor POP3s
         Store store = session.getStore("pop3s");
         store.connect("hitohitotadano7@gmail.com","wctztpcbrptsdjmn");
+        //Importante ir a tu cuenta Gmail y activar la verificación 2FA. Ya que google quitó hace tiempo lo del acceso a aplicaciones poco seguras
+        //Ahora hay que crear una password específica para la aplicación en la que lo vayas a usar
 
-        //we are connecting to the mail server using the username and password of the email account that we want to read emails from.
-        //Once we have connected to the mail server, we can create a folder object that represents the folder containing the emails that we want to read.
-        //POP3 supports only a single folder named "INBOX".
+
+        //Una vez conectados al servidor mail, creamos un objeto carpeta, que representa la carpeta que contiene los emails que queremos leer
+        //POP3 solo permite una única carpeta llamada "INBOX"
         Folder inbox = store.getFolder("INBOX");
         inbox.open(Folder.READ_ONLY);
 
-        // Get the messages from the inbox folder
+        //Recuperamos los mensajes de la carpeta inbox
         messages = inbox.getMessages();
+
+        //Los vamos a ordenar manualmente por fecha de enviado
         ordenarMensajesPorFecha(messages);
 
         if ( messages.length == 0)
             System.out.println("nada?");
 
         try {
-            //imprimirMensajes();
+            //Listado de los mensajes ya ordenados
             imprimirListadoMensajesDeInbox(messages);
+            //Pedimos que nos de el "id" de mensaje que quiere descargar
             Scanner sc= new Scanner (System.in);
             System.out.println("Elija un correo que quiere descargar:");
             int n= sc.nextInt();
+
             imprimirContenidoMensaje(inbox, n);
 
             int n2= sc.nextInt(); //Bloqueo para que no termine
-
+        //Tuve un problema con gmail, y pasaba que cuando consultaba los mensajes del buzón una vez
+        // cuando lo ejecutaba una segunda vez, tenía que volver a activar un setting en la cuenta (POP is enables for all mail) porque por alguna razón se desmarcaba y dejaba de funcionar
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        //Finally, don’t forget to close the folder and store objects when you are done reading the emails
+        //No hay que olvidar cerrar la carpeta y el objeto store cuando terminemos de leer los emails
         inbox.close(false);
         store.close();
     }
@@ -159,38 +163,11 @@ public class Connection {
 
     public void imprimirContenidoMensaje(Folder folder, int idMensaje) throws MessagingException, IOException {
 
-
         Message message = folder.getMessage(idMensaje);
+        //Construyo el mensaje en el constructor de este objeto
         MensajeSencillo mensajeSencillo = new MensajeSencillo(message);
 
-        String asunto = message.getSubject(); // El asunto
-        Address[] remitentes = message.getFrom();
-
-        System.out.println("Asunto: " + asunto);
-        if (remitentes.length > 0) {
-            System.out.println("Remitente: " + remitentes[0].toString());
-        } else {
-            System.out.println("Remitente: Desconocido");
-        }
-
-        //Si el contenido del mensaje, está compuesto de multipartes
-        if (message.getContent() instanceof Multipart) {
-            Multipart multipart = (Multipart) message.getContent();
-
-            // Iterar sobre todas las partes del mensaje
-            for (int i = 0; i < multipart.getCount(); i++) {
-                BodyPart bodyPart = multipart.getBodyPart(i);
-
-                // Si la parte es texto, imprimirlo
-                if (bodyPart.isMimeType("text/plain")) {
-                    System.out.println("Contenido: " + bodyPart.getContent());
-                }
-                // Puedes agregar más condiciones para manejar otros tipos de contenido
-            }
-        } else {
-            // Si el contenido no es multipart, simplemente imprimir el contenido
-            System.out.println("Contenido: " + message.getContent().toString());
-        }
+        System.out.println(mensajeSencillo.getContenidoCompleto());
 
         Scanner sc= new Scanner (System.in);
         System.out.println("¿Descargar Mensaje? Y/N");
@@ -207,10 +184,34 @@ public class Connection {
 
     public  void saveTextContent(MensajeSencillo message, String rutaUsuario)  {
 
+        File dir = new File(rutaUsuario);
+        String rutaArchivo="";
+
+        //solo si el directorio existe, lo usa, si no, no lo crea y usa Descargas del usuario
+        if(!dir.exists()){
+            System.out.println("Ese directorio no existe, se guadará en su carpeta de Descargas.");
+            rutaArchivo = generaRutaLimpia(message, rutaUsuario);
+            dir = new File(rutaArchivo);
+        }
+
+
+        System.out.println("------ Contenido completo del mensaje --------");
+        System.out.println(message.getContenidoCompleto());
+
+        try (FileWriter writer = new FileWriter(rutaArchivo, true)) {
+            writer.append(message.getContenidoCompleto());
+        } catch (IOException e) {
+            System.out.println("Error en el formato");
+        }
+    }
+
+    public String generaRutaLimpia(MensajeSencillo message, String rutaUsuario){
+
+        File dir = new File(rutaUsuario);
+
+        //Por defecto si el directorio no existe
         String dirPordefecto = System.getProperty("user.home") + "\\Downloads\\";
-
         String[] charInvalidos = {"\\", "/", ":", "*", "?", "\"", "<", ">", "|"};
-
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         String fechaFormateada = formatoFecha.format(message.getFechaDeEnvio());
 
@@ -221,19 +222,7 @@ public class Connection {
 
         String nombreDeArchivo = asunto+"_"+fechaFormateada+".txt";
 
-        System.out.println(nombreDeArchivo);
-
-        String rutaArchivo = dirPordefecto + nombreDeArchivo;
-        File dir = new File(rutaArchivo);
-
-        System.out.println("------ Contenido completo del mensaje --------");
-        System.out.println(message.getContenidoCompleto());
-
-        try (FileWriter writer = new FileWriter(rutaArchivo, true)) {
-            writer.append(message.getContenidoCompleto());
-        } catch (IOException e) {
-            System.out.println("Error en el formato");
-        }
+        return dirPordefecto + nombreDeArchivo;
     }
 
 
