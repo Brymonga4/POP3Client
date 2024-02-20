@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dddd312-4e99-4226-9eaf-bfc1c03d2086" name="Changes" comment="Terminado guardar archivo, pero aunque le des un directorio, no lo usa y usa el por defecto (su carpeta de descargas)">
+    <list default="true" id="6dddd312-4e99-4226-9eaf-bfc1c03d2086" name="Changes" comment="Añadido menú interactivo y gestión de MessageException">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MensajeSencillo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MensajeSencillo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,31 +58,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "Maven.POP3Client [clean].executor": "Run",
-    "Maven.POP3Client [install].executor": "Run",
-    "Maven.POP3Client [test].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.POP3Client [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.POP3Client [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.POP3Client [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -116,7 +117,9 @@
       <workItem from="1708414760029" duration="2223000" />
       <workItem from="1708428056055" duration="1902000" />
       <workItem from="1708429968255" duration="17995000" />
-      <workItem from="1708452133636" duration="588000" />
+      <workItem from="1708452133636" duration="1016000" />
+      <workItem from="1708454318995" duration="2928000" />
+      <workItem from="1708457251746" duration="362000" />
     </task>
     <task id="LOCAL-00001" summary="Added ListMessages, MessageByid,&#10;&#10;Importante no quitar la linea de &#10;int n2= sc.nextInt(); //Bloqueo para que no termine&#10;&#10;Porque si no hay que volver a configurar el gmail.">
       <option name="closed" value="true" />
@@ -134,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708449118731</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Añadido menú interactivo y gestión de MessageException">
+      <option name="closed" value="true" />
+      <created>1708452850682</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708452850682</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +165,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added ListMessages, MessageByid,&#10;&#10;Importante no quitar la linea de &#10;int n2= sc.nextInt(); //Bloqueo para que no termine&#10;&#10;Porque si no hay que volver a configurar el gmail." />
     <MESSAGE value="Terminado guardar archivo, pero aunque le des un directorio, no lo usa y usa el por defecto (su carpeta de descargas)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Terminado guardar archivo, pero aunque le des un directorio, no lo usa y usa el por defecto (su carpeta de descargas)" />
+    <MESSAGE value="Añadido menú interactivo y gestión de MessageException" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadido menú interactivo y gestión de MessageException" />
   </component>
 </project>
