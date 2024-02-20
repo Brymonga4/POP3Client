@@ -17,6 +17,8 @@ public class Connection {
             properties.put("mail.pop3s.host", "pop.gmail.com");
             properties.put("mail.pop3s.port", "995");
             properties.put("mail.pop3s.ssl.trust", "*"); // Confía en todos los certificados
+            //yahoo pop.mail.yahoo.com mismo puerto
+            //outlook outlook.office365.com mismo puerto
             //Si se pone a "*", confío en todos los hosts.
             //Se crea un objeto session que contenga las propiedades para la conexión con el servidor mail
             Session session = Session.getDefaultInstance(properties);
