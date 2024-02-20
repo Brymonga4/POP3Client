@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dddd312-4e99-4226-9eaf-bfc1c03d2086" name="Changes" comment="Añadido menú interactivo y gestión de MessageException">
+    <list default="true" id="6dddd312-4e99-4226-9eaf-bfc1c03d2086" name="Changes" comment="Separación de métodos y añadido método de descarga multiple">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MensajeSencillo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MensajeSencillo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +117,8 @@
       <workItem from="1708429968255" duration="17995000" />
       <workItem from="1708452133636" duration="1016000" />
       <workItem from="1708454318995" duration="2928000" />
-      <workItem from="1708457251746" duration="362000" />
+      <workItem from="1708457251746" duration="489000" />
+      <workItem from="1708458246194" duration="96000" />
     </task>
     <task id="LOCAL-00001" summary="Added ListMessages, MessageByid,&#10;&#10;Importante no quitar la linea de &#10;int n2= sc.nextInt(); //Bloqueo para que no termine&#10;&#10;Porque si no hay que volver a configurar el gmail.">
       <option name="closed" value="true" />
@@ -145,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708452850682</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Separación de métodos y añadido método de descarga multiple">
+      <option name="closed" value="true" />
+      <created>1708457720849</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708457720849</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +173,7 @@
     <MESSAGE value="Added ListMessages, MessageByid,&#10;&#10;Importante no quitar la linea de &#10;int n2= sc.nextInt(); //Bloqueo para que no termine&#10;&#10;Porque si no hay que volver a configurar el gmail." />
     <MESSAGE value="Terminado guardar archivo, pero aunque le des un directorio, no lo usa y usa el por defecto (su carpeta de descargas)" />
     <MESSAGE value="Añadido menú interactivo y gestión de MessageException" />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadido menú interactivo y gestión de MessageException" />
+    <MESSAGE value="Separación de métodos y añadido método de descarga multiple" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separación de métodos y añadido método de descarga multiple" />
   </component>
 </project>

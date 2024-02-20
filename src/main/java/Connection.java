@@ -62,7 +62,9 @@ public class Connection {
                         descargarMensajes(messages, cantidad);
                         break;
                     case 0:
-                        System.out.println("Que tenga un buen día =)");
+                        //System.out.println("Que tenga un buen día =)"); //El programa no acaba porque si acaba da problemas con el gmail
+                        System.out.println("Deberia acabar pero no lo hace");
+                        salir=-1;
                         break;
                     default:
                         System.out.println("Elija una opción válida");
