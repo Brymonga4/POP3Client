@@ -7,7 +7,7 @@
     <list default="true" id="6dddd312-4e99-4226-9eaf-bfc1c03d2086" name="Changes" comment="Terminado guardar archivo, pero aunque le des un directorio, no lo usa y usa el por defecto (su carpeta de descargas)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MensajeSencillo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MensajeSencillo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +29,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Brymonga4"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Brymonga4&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -67,7 +67,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Clean-up",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -98,8 +99,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-1.8.0_402-corretto-1.8.0_402-4caba194b151-ae57be32" />
         <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
+        <option value="jdk-21.0.2-liberica-21.0.2-f644763e9732-367768bf" />
       </set>
     </attachedChunks>
   </component>
@@ -115,6 +116,7 @@
       <workItem from="1708414760029" duration="2223000" />
       <workItem from="1708428056055" duration="1902000" />
       <workItem from="1708429968255" duration="17995000" />
+      <workItem from="1708452133636" duration="588000" />
     </task>
     <task id="LOCAL-00001" summary="Added ListMessages, MessageByid,&#10;&#10;Importante no quitar la linea de &#10;int n2= sc.nextInt(); //Bloqueo para que no termine&#10;&#10;Porque si no hay que volver a configurar el gmail.">
       <option name="closed" value="true" />
