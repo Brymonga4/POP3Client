@@ -68,15 +68,27 @@ public class MensajeSencillo {
         return contenidoCompleto;
     }
 
+    public String getAsunto() {
+        return asunto;
+    }
+
+    public String getRemitente() {
+        return remitente;
+    }
+
+    public Date getFechaDeEnvio() {
+        return fechaDeEnvio;
+    }
+
     public String construirContenidoCompleto(){
         StringBuilder contenidoCompleto = new StringBuilder();
 
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         String fechaFormateada = formatoFecha.format(this.fechaDeEnvio);
 
-        contenidoCompleto.append(fechaFormateada).append("\n")
-                         .append(this.asunto).append("\n")
-                         .append(this.remitente).append("\n")
+        contenidoCompleto.append("Fecha: ").append(fechaFormateada).append("\n")
+                         .append("Asunto: ").append(this.asunto).append("\n")
+                         .append("Remitente: ").append(this.remitente).append("\n")
                          .append(this.cuerpo).append("\n");
 
 

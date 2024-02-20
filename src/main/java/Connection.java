@@ -1,17 +1,10 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.security.GeneralSecurityException;
+import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Scanner;
 import javax.mail.*;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 public class Connection {
 
@@ -23,8 +16,7 @@ public class Connection {
         properties.put("mail.pop3s.host", "pop.gmail.com");
         properties.put("mail.pop3s.port", "995");
         properties.put("mail.pop3s.ssl.trust", "*"); // Confía en todos los certificados
-        //mail.pop3.ssl.trust	String	If set, and a socket factory hasn't been specified, enables use of a MailSSLSocketFactory.
-        // If set to "*", all hosts are trusted. If set to a whitespace separated list of hosts, those hosts are trusted. Otherwise, trust depends on the certificate the server presents.
+        //Si se pone a "*", confío en todos los hosts.
 
         //create a session object that contains the connection properties for the mail server.
         Session session = Session.getDefaultInstance(properties);
@@ -213,15 +205,34 @@ public class Connection {
 
     }
 
-    public  void saveTextContent(MensajeSencillo message, String rutaArchivo)  {
-        File directorio = new File(rutaArchivo);
+    public  void saveTextContent(MensajeSencillo message, String rutaUsuario)  {
 
-        System.out.println("------ Contenido completodel mensaje --------");
+        String dirPordefecto = System.getProperty("user.home") + "\\Downloads\\";
+
+        String[] charInvalidos = {"\\", "/", ":", "*", "?", "\"", "<", ">", "|"};
+
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        String fechaFormateada = formatoFecha.format(message.getFechaDeEnvio());
+
+        String asunto = message.getAsunto().replace(" ", "_").toLowerCase();
+        for ( String charInvalido: charInvalidos){
+            asunto = asunto.replace(charInvalido, "");
+        }
+
+        String nombreDeArchivo = asunto+"_"+fechaFormateada+".txt";
+
+        System.out.println(nombreDeArchivo);
+
+        String rutaArchivo = dirPordefecto + nombreDeArchivo;
+        File dir = new File(rutaArchivo);
+
+        System.out.println("------ Contenido completo del mensaje --------");
         System.out.println(message.getContenidoCompleto());
-        try (PrintWriter out = new PrintWriter(rutaArchivo)) {
-            out.println(message.getContenidoCompleto());
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+
+        try (FileWriter writer = new FileWriter(rutaArchivo, true)) {
+            writer.append(message.getContenidoCompleto());
+        } catch (IOException e) {
+            System.out.println("Error en el formato");
         }
     }
 
